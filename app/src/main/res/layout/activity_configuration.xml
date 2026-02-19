@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/config_background"
+    android:layoutDirection="rtl">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/config_padding">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/config_title"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textDirection="rtl"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Preview Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/config_preview_label"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textDirection="rtl"
+            android:layout_marginBottom="8dp" />
+
+        <FrameLayout
+            android:id="@+id/preview_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/preview_min_height"
+            android:padding="@dimen/preview_padding"
+            android:layout_marginBottom="@dimen/config_item_spacing"
+            android:background="@drawable/widget_background">
+
+            <TextView
+                android:id="@+id/preview_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeStepGranularity="1sp"
+                android:textStyle="bold"
+                android:textColor="@color/default_text"
+                android:gravity="center"
+                android:fontFamily="sans-serif-medium"
+                android:textDirection="rtl"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@string/widget_name" />
+
+        </FrameLayout>
+
+        <!-- Options Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/config_options_label"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textDirection="rtl"
+            android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/show_hashaah_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/config_show_hashaah"
+            android:textDirection="rtl"
+            android:layoutDirection="rtl"
+            android:checked="true"
+            android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/show_diacritics_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/config_show_diacritics"
+            android:textDirection="rtl"
+            android:layoutDirection="rtl"
+            android:checked="true"
+            android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/show_time_of_day_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/config_show_time_of_day"
+            android:textDirection="rtl"
+            android:layoutDirection="rtl"
+            android:checked="false"
+            android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/use_special_quarters_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/config_use_special_quarters"
+            android:textDirection="rtl"
+            android:layoutDirection="rtl"
+            android:checked="true"
+            android:layout_marginBottom="@dimen/config_item_spacing" />
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="16dp">
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/config_cancel"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/config_save"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
