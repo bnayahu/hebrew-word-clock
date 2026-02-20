@@ -85,3 +85,7 @@ lint-report_files/
 
 # Mac
 .DS_Store
+
+# Keystore files
+app/release-keystore.jks
+keystore.properties
