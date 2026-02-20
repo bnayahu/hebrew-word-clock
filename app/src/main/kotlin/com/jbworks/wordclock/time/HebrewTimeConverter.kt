@@ -1,10 +1,10 @@
 package com.jbworks.wordclock.time
 
 /**
- * Converts numeric time (hour, minute) to flowing Hebrew text with optional nikud (diacritics).
+ * Converts numeric time (hour, minute) to flowing Hebrew text with nikud (diacritics).
  *
  * Examples:
- * - 14:00 → "הַשָּׁעָה שְׁתַּיִם בְּדִיּוּק"
+ * - 14:00 → "הַשָּׁעָה שְׁתַּיִם"
  * - 14:15 → "הַשָּׁעָה שְׁתַּיִם וָרֶבַע"
  * - 14:32 → "הַשָּׁעָה שְׁתַּיִם וּשְׁלֹשִׁים וּשְׁתַּיִם דַּקּוֹת"
  */
@@ -12,16 +12,14 @@ object HebrewTimeConverter {
 
     data class TimeFormatOptions(
         val showHashaah: Boolean = true,
-        val showDiacritics: Boolean = true,
-        val showTimeOfDay: Boolean = false,
-        val useSpecialQuarters: Boolean = true
+        val showTimeOfDay: Boolean = false
     )
 
     // Hours use feminine forms in Hebrew
     private val hebrewHours = mapOf(
         1 to "אַחַת",
         2 to "שְׁתַּיִם",
-        3 to "שָׁלשׁ",
+        3 to "שָׁלשׁ",
         4 to "אַרְבַּע",
         5 to "חָמֵשׁ",
         6 to "שֵׁשׁ",
@@ -29,15 +27,15 @@ object HebrewTimeConverter {
         8 to "שְׁמוֹנֶה",
         9 to "תֵּשַׁע",
         10 to "עֶשֶׂר",
-        11 to "אַחַת-עֶשְׂרֵה",
-        12 to "שְׁתֵּים-עֶשְׂרֵה"
+        11 to "אַחַת־עֶשְׂרֵה",
+        12 to "שְׁתֵּים־עֶשְׂרֵה"
     )
 
     // Basic numbers 1-19 for minutes (absolute forms)
     private val hebrewOnes = mapOf(
         1 to "אַחַת",
         2 to "שְׁתַּיִם",
-        3 to "שָׁלֹשׁ",
+        3 to "שָׁלוֹשׁ",
         4 to "אַרְבַּע",
         5 to "חָמֵשׁ",
         6 to "שֵׁשׁ",
@@ -50,55 +48,55 @@ object HebrewTimeConverter {
     private val hebrewOnesWithVav = mapOf(
         1 to "וְאַחַת",
         2 to "וּשְׁתַּיִם",
-        3 to "וְשָׁלֹשׁ",
+        3 to "וְשָׁלוֹשׁ",
         4 to "וְאַרְבַּע",
         5 to "וְחָמֵשׁ",
         6 to "וְשֵׁשׁ",
         7 to "וְשֶׁבַע",
         8 to "וּשְׁמוֹנֶה",
-        9 to "וְתֵשַׁע"
+        9 to "וְתֵשַׁע"
     )
 
     private val hebrewTeens = mapOf(
         10 to "עֶשֶׂר",
-        11 to "אַחַת-עֶשְׂרֵה",
-        12 to "שְׁתֵּים-עֶשְׂרֵה",
-        13 to "שְׁלֹשׁ-עֶשְׂרֵה",
-        14 to "אַרְבַּע-עֶשְׂרֵה",
-        15 to "חֲמֵשׁ-עֶשְׂרֵה",
-        16 to "שֵׁשׁ-עֶשְׂרֵה",
-        17 to "שְׁבַע-עֶשְׂרֵה",
-        18 to "שְׁמוֹנֶה-עֶשְׂרֵה",
-        19 to "תְּשַׁע-עֶשְׂרֵה"
+        11 to "אַחַת־עֶשְׂרֵה",
+        12 to "שְׁתֵּים־עֶשְׂרֵה",
+        13 to "שְׁלוֹשׁ־עֶשְׂרֵה",
+        14 to "אַרְבַּע־עֶשְׂרֵה",
+        15 to "חֲמֵשׁ־עֶשְׂרֵה",
+        16 to "שֵׁשׁ־עֶשְׂרֵה",
+        17 to "שְׁבַע־עֶשְׂרֵה",
+        18 to "שְׁמוֹנֶה־עֶשְׂרֵה",
+        19 to "תְּשַׁע־עֶשְׂרֵה"
     )
 
     // Teens with vav prefix (for use in construct)
     private val hebrewTeensWithVav = mapOf(
         10 to "וְעֶשֶׂר",
-        11 to "וְאַחַת-עֶשְׂרֵה",
-        12 to "וּשְׁתַּיִם-עֶשְׂרֵה",
-        13 to "וְשָׁלֹשׁ-עֶשְׂרֵה",
-        14 to "וְאַרְבַּע-עֶשְׂרֵה",
-        15 to "וְחָמֵשׁ-עֶשְׂרֵה",
-        16 to "וְשֵׁשׁ-עֶשְׂרֵה",
-        17 to "וְשֶׁבַע-עֶשְׂרֵה",
-        18 to "וּשְׁמוֹנֶה-עֶשְׂרֵה",
-        19 to "וּתְשַׁע-עֶשְׂרֵה"
+        11 to "וְאַחַת־עֶשְׂרֵה",
+        12 to "וּשְׁתַּיִם־עֶשְׂרֵה",
+        13 to "וּשְׁלוֹשׁ־עֶשְׂרֵה",
+        14 to "וְאַרְבַּע־עֶשְׂרֵה",
+        15 to "וְחָמֵשׁ־עֶשְׂרֵה",
+        16 to "וְשֵׁשׁ־עֶשְׂרֵה",
+        17 to "וּשְׁבַע־עֶשְׂרֵה",
+        18 to "וּשְׁמוֹנֶה־עֶשְׂרֵה",
+        19 to "וּתְשַׁע־עֶשְׂרֵה"
     )
 
     private val hebrewTens = mapOf(
         20 to "עֶשְׂרִים",
-        30 to "שְׁלֹשׁים",
-        40 to "אַרְבָּעִים",
+        30 to "שְׁלוֹשִׁים",
+        40 to "אַרְבָּעִים",
         50 to "חֲמִשִּׁים"
     )
 
     // Tens with vav prefix (for use in construct)
     private val hebrewTensWithVav = mapOf(
         20 to "וְעֶשְׂרִים",
-        30 to "וּשְׁלֹשׁים",
-        40 to "וְאַרְבָּעִים",
-        50 to "וַחֲמִשִּׁים"
+        30 to "וּשְׁלוֹשִׁים",
+        40 to "וְאַרְבָּעִים",
+        50 to "וַחֲמִשִּׁים"
     )
 
     /**
@@ -127,62 +125,33 @@ object HebrewTimeConverter {
             0 -> "${prefix}${hourText}"
             1 -> "${prefix}${hourText} וְדַקָּה אַחַת"
             2 -> "${prefix}${hourText} וּשְׁתֵּי דַּקּוֹת"
-            5 -> if (options.useSpecialQuarters) {
-                "${prefix}${hourText} וָחֲמִשָּׁה"
-            } else {
-                "${prefix}${hourText} ${convertMinutesWithVav(minute)} דַּקּוֹת"
-            }
-            10 -> if (options.useSpecialQuarters) {
-                "${prefix}${hourText} וַעֲשָׂרָה"
-            } else {
-                "${prefix}${hourText} ${convertMinutesWithVav(minute)} דַּקּוֹת"
-            }
-            15 -> if (options.useSpecialQuarters) {
-                "${prefix}${hourText} וָרֶבַע"
-            } else {
-                "${prefix}${hourText} ${convertMinutesWithVav(minute)} דַּקּוֹת"
-            }
-            30 -> if (options.useSpecialQuarters) {
-                "${prefix}${hourText} וָחֵצִי"
-            } else {
-                "${prefix}${hourText} ${convertMinutesWithVav(minute)} דַּקּוֹת"
-            }
-            45 -> if (options.useSpecialQuarters) {
+            5 -> "${prefix}${hourText} וָחֲמִשָּׁה"
+            10 -> "${prefix}${hourText} וַעֲשָׂרָה"
+            15 -> "${prefix}${hourText} וָרֶבַע"
+            20 -> "${prefix}${hourText} ${convertMinutesWithVav(minute)}"
+            30 -> "${prefix}${hourText} וָחֵצִי"
+            40 -> "${prefix}${hourText} ${convertMinutesWithVav(minute)}"
+            45 -> {
                 val nextHour = if (hour12 == 12) 1 else hour12 + 1
                 "רֶבַע לְ${hebrewHours[nextHour]}"
-            } else {
-                "${prefix}${hourText} ${convertMinutesWithVav(minute)} דַּקּוֹת"
             }
-            50 -> if (options.useSpecialQuarters) {
+            50 -> {
                 val nextHour = if (hour12 == 12) 1 else hour12 + 1
-                "עֲשָׂרָה לְ${hebrewHours[nextHour]}"
-            } else {
-                "${prefix}${hourText} ${convertMinutesWithVav(minute)} דַּקּוֹת"
+                "עֲשָׂרָה לְ${hebrewHours[nextHour]}"
             }
-            55 -> if (options.useSpecialQuarters) {
+            55 -> {
                 val nextHour = if (hour12 == 12) 1 else hour12 + 1
                 "חֲמִשָּׁה לְ${hebrewHours[nextHour]}"
-            } else {
-                "${prefix}${hourText} ${convertMinutesWithVav(minute)} דַּקּוֹת"
             }
             else -> "${prefix}${hourText} ${convertMinutesWithVav(minute)} דַּקּוֹת"
         }
 
         return if (options.showTimeOfDay) {
             val timeOfDaySuffix = getTimeOfDaySuffix(hour)
-            val fullText = "$timeText $timeOfDaySuffix"
-            if (options.showDiacritics) fullText else removeDiacritics(fullText)
+            "$timeText $timeOfDaySuffix"
         } else {
-            if (options.showDiacritics) timeText else removeDiacritics(timeText)
+            timeText
         }
-    }
-
-    /**
-     * Removes diacritics (nikud) from Hebrew text.
-     */
-    private fun removeDiacritics(text: String): String {
-        // Unicode range for Hebrew diacritics: U+0591 to U+05C7
-        return text.replace(Regex("[\u0591-\u05C7]"), "")
     }
 
     /**
@@ -192,7 +161,7 @@ object HebrewTimeConverter {
         return when (hour) {
             in 6..11 -> "בַּבֹּקֶר"
             in 12..13 -> "בַּצָּהֳרַיִם"
-            in 14..17 -> "אַחַר-הַצָּהֳרַיִם"
+            in 14..17 -> "אַחַר־הַצָּהֳרַיִם"
             in 18..20 -> "בָּעֶרֶב"
             else -> "בַּלַּיְלָה"
         }

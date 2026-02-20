@@ -14,9 +14,7 @@ class HebrewTimeConverterPrintTest {
     fun `print all times with all options enabled`() {
         val options = HebrewTimeConverter.TimeFormatOptions(
             showHashaah = true,
-            showDiacritics = true,
-            showTimeOfDay = true,
-            useSpecialQuarters = true
+            showTimeOfDay = true
         )
 
         val outputFile = java.io.File("/tmp/hebrew_times_full.txt")
@@ -62,9 +60,7 @@ class HebrewTimeConverterPrintTest {
     fun `print special times only`() {
         val options = HebrewTimeConverter.TimeFormatOptions(
             showHashaah = true,
-            showDiacritics = true,
-            showTimeOfDay = true,
-            useSpecialQuarters = true
+            showTimeOfDay = true
         )
 
         println("=" * 80)
@@ -95,16 +91,12 @@ class HebrewTimeConverterPrintTest {
     fun `print comparison with and without options`() {
         val allEnabled = HebrewTimeConverter.TimeFormatOptions(
             showHashaah = true,
-            showDiacritics = true,
-            showTimeOfDay = true,
-            useSpecialQuarters = true
+            showTimeOfDay = true
         )
 
         val allDisabled = HebrewTimeConverter.TimeFormatOptions(
             showHashaah = false,
-            showDiacritics = false,
-            showTimeOfDay = false,
-            useSpecialQuarters = false
+            showTimeOfDay = false
         )
 
         println("=" * 80)

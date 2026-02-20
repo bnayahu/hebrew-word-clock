@@ -81,16 +81,6 @@
             android:layout_marginBottom="8dp" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/show_diacritics_switch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/config_show_diacritics"
-            android:textDirection="rtl"
-            android:layoutDirection="rtl"
-            android:checked="true"
-            android:layout_marginBottom="8dp" />
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/show_time_of_day_switch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -98,16 +88,6 @@
             android:textDirection="rtl"
             android:layoutDirection="rtl"
             android:checked="false"
-            android:layout_marginBottom="8dp" />
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/use_special_quarters_switch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/config_use_special_quarters"
-            android:textDirection="rtl"
-            android:layoutDirection="rtl"
-            android:checked="true"
             android:layout_marginBottom="@dimen/config_item_spacing" />
 
         <!-- Action Buttons -->

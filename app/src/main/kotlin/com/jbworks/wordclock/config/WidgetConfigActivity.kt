@@ -26,9 +26,7 @@ class WidgetConfigActivity : AppCompatActivity() {
     private lateinit var previewContainer: android.view.View
     private lateinit var previewText: TextView
     private lateinit var showHashaahSwitch: SwitchMaterial
-    private lateinit var showDiacriticsSwitch: SwitchMaterial
     private lateinit var showTimeOfDaySwitch: SwitchMaterial
-    private lateinit var useSpecialQuartersSwitch: SwitchMaterial
     private lateinit var saveButton: Button
     private lateinit var cancelButton: Button
 
@@ -60,9 +58,7 @@ class WidgetConfigActivity : AppCompatActivity() {
         previewContainer = findViewById(R.id.preview_container)
         previewText = findViewById(R.id.preview_text)
         showHashaahSwitch = findViewById(R.id.show_hashaah_switch)
-        showDiacriticsSwitch = findViewById(R.id.show_diacritics_switch)
         showTimeOfDaySwitch = findViewById(R.id.show_time_of_day_switch)
-        useSpecialQuartersSwitch = findViewById(R.id.use_special_quarters_switch)
         saveButton = findViewById(R.id.save_button)
         cancelButton = findViewById(R.id.cancel_button)
 
@@ -78,18 +74,14 @@ class WidgetConfigActivity : AppCompatActivity() {
 
     private fun loadPreferences() {
         showHashaahSwitch.isChecked = prefs.getShowHashaah()
-        showDiacriticsSwitch.isChecked = prefs.getShowDiacritics()
         showTimeOfDaySwitch.isChecked = prefs.getShowTimeOfDay()
-        useSpecialQuartersSwitch.isChecked = prefs.getUseSpecialQuarters()
     }
 
     private fun setupSwitches() {
         val updateListener = { _: Any -> updatePreview() }
 
         showHashaahSwitch.setOnCheckedChangeListener { _, _ -> updateListener(Unit) }
-        showDiacriticsSwitch.setOnCheckedChangeListener { _, _ -> updateListener(Unit) }
         showTimeOfDaySwitch.setOnCheckedChangeListener { _, _ -> updateListener(Unit) }
-        useSpecialQuartersSwitch.setOnCheckedChangeListener { _, _ -> updateListener(Unit) }
     }
 
     private fun setupButtons() {
@@ -111,9 +103,7 @@ class WidgetConfigActivity : AppCompatActivity() {
         // Get format options from switches
         val options = HebrewTimeConverter.TimeFormatOptions(
             showHashaah = showHashaahSwitch.isChecked,
-            showDiacritics = showDiacriticsSwitch.isChecked,
             showTimeOfDay = showTimeOfDaySwitch.isChecked,
-            useSpecialQuarters = useSpecialQuartersSwitch.isChecked
         )
 
         // Convert time with options
@@ -131,9 +121,7 @@ class WidgetConfigActivity : AppCompatActivity() {
     private fun saveConfiguration() {
         // Save preferences
         prefs.setShowHashaah(showHashaahSwitch.isChecked)
-        prefs.setShowDiacritics(showDiacriticsSwitch.isChecked)
         prefs.setShowTimeOfDay(showTimeOfDaySwitch.isChecked)
-        prefs.setUseSpecialQuarters(useSpecialQuartersSwitch.isChecked)
 
         // Update widget immediately
         val appWidgetManager = AppWidgetManager.getInstance(this)

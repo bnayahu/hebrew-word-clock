@@ -71,9 +71,7 @@ class WordClockWidget : AppWidgetProvider() {
             // Get format options from preferences
             val options = HebrewTimeConverter.TimeFormatOptions(
                 showHashaah = prefs.getShowHashaah(),
-                showDiacritics = prefs.getShowDiacritics(),
                 showTimeOfDay = prefs.getShowTimeOfDay(),
-                useSpecialQuarters = prefs.getUseSpecialQuarters()
             )
 
             // Convert to Hebrew text with options

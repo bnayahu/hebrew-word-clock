@@ -14,9 +14,7 @@ class WidgetPreferences(context: Context, private val widgetId: Int) {
 
     companion object {
         private const val KEY_SHOW_HASHAAH = "show_hashaah"
-        private const val KEY_SHOW_DIACRITICS = "show_diacritics"
         private const val KEY_SHOW_TIME_OF_DAY = "show_time_of_day"
-        private const val KEY_USE_SPECIAL_QUARTERS = "use_special_quarters"
     }
 
     /**
@@ -34,20 +32,6 @@ class WidgetPreferences(context: Context, private val widgetId: Int) {
     }
 
     /**
-     * Gets whether to show diacritics (nikud).
-     */
-    fun getShowDiacritics(): Boolean {
-        return prefs.getBoolean(KEY_SHOW_DIACRITICS, true)
-    }
-
-    /**
-     * Sets whether to show diacritics (nikud).
-     */
-    fun setShowDiacritics(show: Boolean) {
-        prefs.edit().putBoolean(KEY_SHOW_DIACRITICS, show).apply()
-    }
-
-    /**
      * Gets whether to show time of day suffix.
      */
     fun getShowTimeOfDay(): Boolean {
@@ -59,20 +43,6 @@ class WidgetPreferences(context: Context, private val widgetId: Int) {
      */
     fun setShowTimeOfDay(show: Boolean) {
         prefs.edit().putBoolean(KEY_SHOW_TIME_OF_DAY, show).apply()
-    }
-
-    /**
-     * Gets whether to use special quarter forms (ורבע/וחצי).
-     */
-    fun getUseSpecialQuarters(): Boolean {
-        return prefs.getBoolean(KEY_USE_SPECIAL_QUARTERS, true)
-    }
-
-    /**
-     * Sets whether to use special quarter forms (ורבע/וחצי).
-     */
-    fun setUseSpecialQuarters(use: Boolean) {
-        prefs.edit().putBoolean(KEY_USE_SPECIAL_QUARTERS, use).apply()
     }
 
     /**

@@ -4,16 +4,15 @@ An Android home screen widget that displays the current time as flowing Hebrew t
 
 ## Features
 
-- **Hebrew Time Display**: Shows time in natural Hebrew language (e.g., "השעה שתיים עשרה ושלושים ושתיים דקות")
+- **Hebrew Time Display**: Shows time in natural Hebrew language with full diacritics (nikud) (e.g., "הַשָּׁעָה שְׁתַּיִם וּשְׁלוֹשִׁים וּשְׁתַּיִם דַּקּוֹת")
+- **Natural Hebrew Expressions**: Uses special time forms (וָחֲמִשָּׁה, וָעֶשְׂרָה, וָרֶבַע, וָחֵצִי, רֶבַע לְ, עֲשָׂרָה לְ, חֲמִשָּׁה לְ for :05, :10, :15, :30, :45, :50, :55)
 - **Minute Precision**: Updates every minute with all 60 possible minute values
 - **Material You Integration**: Automatic color themes that adapt to your Android 12+ system theme (light/dark mode)
 - **Auto-Scaling Text**: Font size automatically adjusts to fit the widget dimensions
 - **Compact Layout**: Optimized for 1 row × 4 columns (minimum size)
 - **Customizable Display Options**:
   - Toggle "השעה" prefix (show/hide "The hour is...")
-  - Enable/disable diacritics (nikud) for easier reading
-  - Add time-of-day context (בבוקר, בצהריים, אחרי הצהריים, בערב, בלילה)
-  - Use special time forms (וחמישה, ועשרה, ורבע, וחצי, רבע ל, עשרה ל, חמישה ל for :05, :10, :15, :30, :45, :50, :55)
+  - Add time-of-day context (בַּבֹּקֶר, בַּצָּהֳרַיִם, אַחַר־הַצָּהֳרַיִם, בָּעֶרֶב, בַּלַּיְלָה)
 - **Battery Efficient**: Uses hybrid update mechanism (AlarmManager + WorkManager)
 - **RTL Support**: Proper right-to-left layout for Hebrew text
 
@@ -34,24 +33,27 @@ An Android home screen widget that displays the current time as flowing Hebrew t
 
 When adding the widget, you can customize the following settings:
 
-- **Show 'השעה'**: Display the word "השעה" (the hour) at the beginning of the time
-- **Show Diacritics**: Enable or disable Hebrew nikud (vowel points)
+- **Show 'השעה'**: Display the word "הַשָּׁעָה" (the hour) at the beginning of the time
 - **Time of Day**: Add contextual suffixes based on the hour:
-  - 6:00-11:59 → "בבוקר" (in the morning)
-  - 12:00-13:59 → "בצהריים" (at noon)
-  - 14:00-17:59 → "אחרי הצהריים" (in the afternoon)
-  - 18:00-20:59 → "בערב" (in the evening)
-  - 21:00-5:59 → "בלילה" (at night)
-- **Special Time Forms**: Use natural Hebrew expressions:
-  - 5 minutes past → "וחמישה" (and five)
-  - 10 minutes past → "ועשרה" (and ten)
-  - 15 minutes past → "ורבע" (and a quarter)
-  - 30 minutes past → "וחצי" (and a half)
-  - 45 minutes past → "רבע ל" (quarter to)
-  - 50 minutes past → "עשרה ל" (ten to)
-  - 55 minutes past → "חמישה ל" (five to)
+  - 6:00-11:59 → "בַּבֹּקֶר" (in the morning)
+  - 12:00-13:59 → "בַּצָּהֳרַיִם" (at noon)
+  - 14:00-17:59 → "אַחַר־הַצָּהֳרַיִם" (in the afternoon)
+  - 18:00-20:59 → "בָּעֶרֶב" (in the evening)
+  - 21:00-5:59 → "בַּלַּיְלָה" (at night)
 
 All settings have a live preview that updates in real-time.
+
+### Built-in Features (Always Enabled)
+
+- **Diacritics (Nikud)**: Full Hebrew vowel points for accurate pronunciation
+- **Special Time Forms**: Natural Hebrew expressions for common times:
+  - 5 minutes past → "וָחֲמִשָּׁה" (and five)
+  - 10 minutes past → "וָעֶשְׂרָה" (and ten)
+  - 15 minutes past → "וָרֶבַע" (and a quarter)
+  - 30 minutes past → "וָחֵצִי" (and a half)
+  - 45 minutes past → "רֶבַע לְ" (quarter to)
+  - 50 minutes past → "עֲשָׂרָה לְ" (ten to)
+  - 55 minutes past → "חֲמִשָּׁה לְ" (five to)
 
 ## Technical Details
 
@@ -73,11 +75,11 @@ The widget uses a hybrid approach for updates:
 
 ### Hebrew Number System
 
-- Hours use feminine forms (אחת, שתיים, שלוש...)
-- Special cases for exact hours, quarter past, half past, and quarter to (configurable)
+- Hours use feminine forms (אַחַת, שְׁתַּיִם, שָׁלשׁ...)
+- Special cases for exact hours, quarter past, half past, and quarter to
 - Singular, dual, and plural forms handled correctly
 - 12-hour format with AM/PM conversion
-- Optional diacritics (nikud) for accurate pronunciation
+- Full diacritics (nikud) for accurate pronunciation
 - Optional time-of-day context for clarity
 
 ## Testing
@@ -88,10 +90,10 @@ Run unit tests:
 ```
 
 Tests cover:
-- All 720 time combinations (12 hours × 60 minutes)
+- All 1440 time combinations (24 hours × 60 minutes)
 - Edge cases and invalid inputs
-- All formatting options (with/without diacritics, prefix, time-of-day suffix, special quarters)
-- Combined option scenarios
+- All formatting options (with/without prefix and time-of-day suffix)
+- Special time forms (quarters, halves, and special minute values)
 
 ## License
 

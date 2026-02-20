@@ -11,9 +11,7 @@
     <string name="config_preview_label">תצוגה מקדימה</string>
     <string name="config_options_label">אפשרויות תצוגה</string>
     <string name="config_show_hashaah">הצג \'השעה\' בתחילת המשפט</string>
-    <string name="config_show_diacritics">הצג ניקוד</string>
     <string name="config_show_time_of_day">הצג זמן ביום (בבוקר, בערב, וכו\')</string>
-    <string name="config_use_special_quarters">השתמש בצורות מיוחדות: \'וחמישה\', \'ועשרה\', \'ורבע\', \'וחצי\', \'רבע ל\', \'עשרה ל\' ו\'חמישה ל\'</string>
     <string name="config_save">שמור</string>
     <string name="config_cancel">ביטול</string>
 
