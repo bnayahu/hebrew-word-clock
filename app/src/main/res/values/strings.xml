@@ -6,29 +6,10 @@
 
     <!-- Configuration Activity -->
     <string name="config_title">הגדרות שעון מילים</string>
-    <string name="config_theme_label">ערכת צבעים</string>
-    <string name="config_font_size_label">גודל טקסט</string>
     <string name="config_preview_label">תצוגה מקדימה</string>
     <string name="config_options_label">אפשרויות תצוגה</string>
     <string name="config_show_hashaah">הצג \'השעה\' בתחילת המשפט</string>
     <string name="config_show_time_of_day">הצג זמן ביום (בבוקר, בערב, וכו\')</string>
     <string name="config_save">שמור</string>
     <string name="config_cancel">ביטול</string>
-
-    <!-- Theme names -->
-    <string name="theme_dynamic_light">Material You - בהיר</string>
-    <string name="theme_dynamic_dark">Material You - כהה</string>
-    <string name="theme_classic_white">קלאסי - לבן על שחור</string>
-    <string name="theme_classic_black">קלאסי - שחור על לבן</string>
-    <string name="theme_blue">כחול</string>
-    <string name="theme_green">ירוק</string>
-
-    <!-- Font sizes -->
-    <string name="font_size_small">קטן</string>
-    <string name="font_size_medium">בינוני</string>
-    <string name="font_size_large">גדול</string>
-    <string name="font_size_extra_large">גדול מאוד</string>
-
-    <!-- Error messages -->
-    <string name="error_widget_config">שגיאה בהגדרת הווידג\'ט</string>
 </resources>

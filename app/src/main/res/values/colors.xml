@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Classic White theme -->
-    <color name="classic_white_text">#FFFFFF</color>
-    <color name="classic_white_background">#000000</color>
-
-    <!-- Classic Black theme -->
-    <color name="classic_black_text">#000000</color>
-    <color name="classic_black_background">#FFFFFF</color>
-
     <!-- Blue theme -->
     <color name="blue_text">#2196F3</color>
-    <color name="blue_background">#E3F2FD</color>
 
     <!-- Green theme -->
     <color name="green_text">#4CAF50</color>
-    <color name="green_background">#E8F5E9</color>
 
     <!-- Default fallback -->
     <color name="default_text">#FFFFFF</color>
@@ -22,5 +12,4 @@
 
     <!-- Configuration activity colors -->
     <color name="config_background">#FAFAFA</color>
-    <color name="preview_border">#BDBDBD</color>
 </resources>

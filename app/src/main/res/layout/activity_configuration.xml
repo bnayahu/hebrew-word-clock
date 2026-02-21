@@ -77,7 +77,7 @@
             android:text="@string/config_show_hashaah"
             android:textDirection="rtl"
             android:layoutDirection="rtl"
-            android:checked="true"
+            android:checked="false"
             android:layout_marginBottom="8dp" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial

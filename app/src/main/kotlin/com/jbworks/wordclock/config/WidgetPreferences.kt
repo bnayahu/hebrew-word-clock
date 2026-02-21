@@ -21,7 +21,7 @@ class WidgetPreferences(context: Context, private val widgetId: Int) {
      * Gets whether to show "השעה" at the beginning.
      */
     fun getShowHashaah(): Boolean {
-        return prefs.getBoolean(KEY_SHOW_HASHAAH, true)
+        return prefs.getBoolean(KEY_SHOW_HASHAAH, false)
     }
 
     /**

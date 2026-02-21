@@ -11,7 +11,7 @@ package com.jbworks.wordclock.time
 object HebrewTimeConverter {
 
     data class TimeFormatOptions(
-        val showHashaah: Boolean = true,
+        val showHashaah: Boolean = false,
         val showTimeOfDay: Boolean = false
     )
 
@@ -19,7 +19,7 @@ object HebrewTimeConverter {
     private val hebrewHours = mapOf(
         1 to "אַחַת",
         2 to "שְׁתַּיִם",
-        3 to "שָׁלשׁ",
+        3 to "שָׁלוֹשׁ",
         4 to "אַרְבַּע",
         5 to "חָמֵשׁ",
         6 to "שֵׁשׁ",
@@ -190,26 +190,4 @@ object HebrewTimeConverter {
         }
     }
 
-    /**
-     * Converts a minute value (3-59, excluding special cases) to Hebrew text (without vav).
-     *
-     * @param minute Minute value (3-59)
-     * @return Hebrew text for the minute value
-     */
-    private fun convertMinutes(minute: Int): String {
-        return when (minute) {
-            in 3..9 -> hebrewOnes[minute]!!
-            in 10..19 -> hebrewTeens[minute]!!
-            in 20..59 -> {
-                val tens = (minute / 10) * 10
-                val ones = minute % 10
-                if (ones == 0) {
-                    hebrewTens[tens]!!
-                } else {
-                    "${hebrewTens[tens]} ${hebrewOnesWithVav[ones]}"
-                }
-            }
-            else -> throw IllegalArgumentException("Unexpected minute value: $minute")
-        }
-    }
 }
