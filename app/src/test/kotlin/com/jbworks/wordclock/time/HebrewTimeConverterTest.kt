@@ -84,9 +84,10 @@ class HebrewTimeConverterTest {
 
     @Test
     fun `test quarter to - minute 45`() {
-        assertEquals("רֶבַע לְשְׁתַּיִם", HebrewTimeConverter.convertTime(1, 45))
+        assertEquals("רֶבַע לִשְׁתַּיִם", HebrewTimeConverter.convertTime(1, 45))
         assertEquals("רֶבַע לְשָׁלוֹשׁ", HebrewTimeConverter.convertTime(2, 45))
-        assertEquals("רֶבַע לְשְׁתֵּים־עֶשְׂרֵה", HebrewTimeConverter.convertTime(11, 45))
+        assertEquals("רֶבַע לִשְׁמוֹנֶה", HebrewTimeConverter.convertTime(7, 45))
+        assertEquals("רֶבַע לִשְׁתֵּים־עֶשְׂרֵה", HebrewTimeConverter.convertTime(11, 45))
 
         // 12:45 should wrap to "quarter to one"
         assertEquals("רֶבַע לְאַחַת", HebrewTimeConverter.convertTime(12, 45))
@@ -98,9 +99,10 @@ class HebrewTimeConverterTest {
 
     @Test
     fun `test ten to - minute 50`() {
-        assertEquals("עֲשָׂרָה לְשְׁתַּיִם", HebrewTimeConverter.convertTime(1, 50))
+        assertEquals("עֲשָׂרָה לִשְׁתַּיִם", HebrewTimeConverter.convertTime(1, 50))
         assertEquals("עֲשָׂרָה לְשָׁלוֹשׁ", HebrewTimeConverter.convertTime(2, 50))
-        assertEquals("עֲשָׂרָה לְשְׁתֵּים־עֶשְׂרֵה", HebrewTimeConverter.convertTime(11, 50))
+        assertEquals("עֲשָׂרָה לִשְׁמוֹנֶה", HebrewTimeConverter.convertTime(7, 50))
+        assertEquals("עֲשָׂרָה לִשְׁתֵּים־עֶשְׂרֵה", HebrewTimeConverter.convertTime(11, 50))
 
         // 12:50 should wrap to "ten to one"
         assertEquals("עֲשָׂרָה לְאַחַת", HebrewTimeConverter.convertTime(12, 50))
@@ -112,9 +114,10 @@ class HebrewTimeConverterTest {
 
     @Test
     fun `test five to - minute 55`() {
-        assertEquals("חֲמִשָּׁה לְשְׁתַּיִם", HebrewTimeConverter.convertTime(1, 55))
+        assertEquals("חֲמִשָּׁה לִשְׁתַּיִם", HebrewTimeConverter.convertTime(1, 55))
         assertEquals("חֲמִשָּׁה לְשָׁלוֹשׁ", HebrewTimeConverter.convertTime(2, 55))
-        assertEquals("חֲמִשָּׁה לְשְׁתֵּים־עֶשְׂרֵה", HebrewTimeConverter.convertTime(11, 55))
+        assertEquals("חֲמִשָּׁה לִשְׁמוֹנֶה", HebrewTimeConverter.convertTime(7, 55))
+        assertEquals("חֲמִשָּׁה לִשְׁתֵּים־עֶשְׂרֵה", HebrewTimeConverter.convertTime(11, 55))
 
         // 12:55 should wrap to "five to one"
         assertEquals("חֲמִשָּׁה לְאַחַת", HebrewTimeConverter.convertTime(12, 55))

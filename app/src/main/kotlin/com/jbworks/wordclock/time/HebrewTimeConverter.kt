@@ -133,15 +133,18 @@ object HebrewTimeConverter {
             40 -> "${prefix}${hourText} ${convertMinutesWithVav(minute)}"
             45 -> {
                 val nextHour = if (hour12 == 12) 1 else hour12 + 1
-                "רֶבַע לְ${hebrewHours[nextHour]}"
+                val lamed = if (nextHour == 2 || nextHour == 8 || nextHour == 12) "לִ" else "לְ"
+                "רֶבַע ${lamed}${hebrewHours[nextHour]}"
             }
             50 -> {
                 val nextHour = if (hour12 == 12) 1 else hour12 + 1
-                "עֲשָׂרָה לְ${hebrewHours[nextHour]}"
+                val lamed = if (nextHour == 2 || nextHour == 8 || nextHour == 12) "לִ" else "לְ"
+                "עֲשָׂרָה ${lamed}${hebrewHours[nextHour]}"
             }
             55 -> {
                 val nextHour = if (hour12 == 12) 1 else hour12 + 1
-                "חֲמִשָּׁה לְ${hebrewHours[nextHour]}"
+                val lamed = if (nextHour == 2 || nextHour == 8 || nextHour == 12) "לִ" else "לְ"
+                "חֲמִשָּׁה ${lamed}${hebrewHours[nextHour]}"
             }
             else -> "${prefix}${hourText} ${convertMinutesWithVav(minute)} דַּקּוֹת"
         }
